@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p #{title}
+
+block jscripts
+    script.
+      var es = new EventSource('/timer-stream');
+
+      es.addEventListener("timer", function (event) {
+        console.log("Event ", event);
+      });
+
+      es.addEventListener("end", function (event) {
+        console.log("Event ", event);
+      });

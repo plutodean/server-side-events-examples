@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p #{title}
+
+block jscripts
+    script. 
+      var es = new EventSource('/redis-stream');
+
+      es.addEventListener("via-redis", function (event) {
+        console.log("Event via Redis ", event);
+      });
+

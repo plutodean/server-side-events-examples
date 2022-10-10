@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p 'Basic events'
+
+block jscripts
+    script. 
+      var es = new EventSource('/basic-stream');
+
+      es.onmessage = function (event) {
+        console.log("Message ", event);
+      };

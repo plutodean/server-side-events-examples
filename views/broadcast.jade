@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p #{title}
+
+block jscripts
+    script. 
+      var es = new EventSource('/broadcast-stream?name=' + Date.now());
+      es.addEventListener('new-user', function (event) {
+        console.log("New user joined ", event);
+      });
+

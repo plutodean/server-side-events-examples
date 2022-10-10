@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p #{description}
+
+block scripts
+    script. 
+      var es = new EventSource('/stream');
+      var eventName = "tbd";
+
+      es.onmessage = function (event) {
+        console.log("Message ", event);
+      };
+      
+      es.addEventListener(eventName, function (event) {
+        console.log("Event ", event);
+      });
+
